@@ -6,31 +6,12 @@ build:
         - script:
             name: config
             code: |
-                GCLOUD_VERSION="151.0.0-linux-x86_64"
+                GCLOUD_VERSION="189.0.0-linux-x86_64"
                 export GCLOUD_DIRNAME="google-cloud-sdk"
-                export GCLOUD_SHA="53caea9133e3ed0efe26164e8a29751a3caf770f"
+                export GCLOUD_SHA="70dcb28e205fe64b48b235f38cc35dcdc294b31aec4d873b61a468eb843d4b1f"
                 export GCLOUD_FILENAME="${GCLOUD_DIRNAME}-${GCLOUD_VERSION}.tar.gz"
                 export GCLOUD_URL="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${GCLOUD_FILENAME}"
-                export UPX_VERSION="3.93"
-                export UPX_SHA="db4ec36b930e7d7e082d93124a59d38fbaedd1c0"
-                export UPX_DIRNAME="upx-${UPX_VERSION}-amd64_linux"
-                export UPX_FILENAME="${UPX_DIRNAME}.tar.xz"
-                export UPX_URL="https://github.com/upx/upx/releases/download/v${UPX_VERSION}/${UPX_FILENAME}"
                 echo "Installing version ${GCLOUD_VERSION} of the Google Cloud SDK"
-        - script:
-            name: fetch upx
-            code: |
-                curl -L ${UPX_URL} -o ${UPX_FILENAME}
-
-        - script:
-            name: validate upx archive
-            code: |
-                sha1sum ${UPX_FILENAME} | grep -q "${UPX_SHA}"
-
-        - script:
-            name: Extract upx archive
-            code: |
-                tar -xf ${UPX_FILENAME}
 
         - script:
             name: Fetch gcloud archive
@@ -40,7 +21,7 @@ build:
         - script:
             name: Validate gcloud archive
             code: |
-                sha1sum ${GCLOUD_FILENAME} | grep -q "${GCLOUD_SHA}"
+                sha256sum ${GCLOUD_FILENAME} | grep -q "${GCLOUD_SHA}"
 
         - script:
             name: Extract gcloud archive
@@ -65,14 +46,3 @@ build:
                 chmod ugo+rx "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/gcloud"
                 rm -rf "${GCLOUD_DIRNAME}/platform/gsutil"
                 rm -rf "${GCLOUD_DIRNAME}/platform/bq"
-
-        - script:
-            name: Compress kubectl
-            code: |
-                ${UPX_DIRNAME}/upx "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/kubectl"
-
-        - script:
-            name: Measure output folder
-            code: |
-                du -csh $WERCKER_OUTPUT_DIR/*
-                du -csh $WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/*
