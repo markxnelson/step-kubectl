@@ -1,7 +1,14 @@
-box: debian:stable-slim
+box: debian:jessie-slim
 build:
     steps:
         - shellcheck
+
+        - script:
+            name: Install dependencies
+            code: |
+                apt-get update && apt-get install -y curl ca-certificates python && rm -rf /var/lib/apt/lists/* # wget netcat xz-utils  
+                # apt-get update && apt-get install -y curl wget ca-certificates netcat xz-utils python && rm -rf /var/lib/apt/lists/*
+
 
         - script:
             name: config
@@ -41,7 +48,7 @@ build:
         - script:
             name: prepare output
             code: |
-                cp  "${WERCKER_ROOT}/LICENSE" "${WERCKER_ROOT}/README.md" "${WERCKER_ROOT}/run.sh" "${WERCKER_ROOT}/wercker.yml" "${WERCKER_ROOT}/wercker-step.yml" "$WERCKER_OUTPUT_DIR"
+                cp  "${WERCKER_ROOT}/LICENSE" "${WERCKER_ROOT}/README.md" "${WERCKER_ROOT}/run.sh" "${WERCKER_ROOT}/wercker.yml" "${WERCKER_ROOT}/step.yml" "$WERCKER_OUTPUT_DIR"
                 cd $WERCKER_OUTPUT_DIR
                 chmod ugo+rx "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/gcloud"
                 rm -rf "${GCLOUD_DIRNAME}/platform/gsutil"
