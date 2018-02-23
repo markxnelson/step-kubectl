@@ -1,4 +1,4 @@
-box: wercker/default
+box: debian:stable-slim
 build:
     steps:
         - shellcheck
@@ -46,3 +46,8 @@ build:
                 chmod ugo+rx "$WERCKER_OUTPUT_DIR/${GCLOUD_DIRNAME}/bin/gcloud"
                 rm -rf "${GCLOUD_DIRNAME}/platform/gsutil"
                 rm -rf "${GCLOUD_DIRNAME}/platform/bq"
+
+publish:
+    steps:
+        - internal/publish-step:
+            owner: cmeury
