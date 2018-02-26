@@ -1,4 +1,6 @@
-box: debian:jessie-slim
+box: 
+  id: debian
+  tag: jessie-slim
 build:
     steps:
         - shellcheck
