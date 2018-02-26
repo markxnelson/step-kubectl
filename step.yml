@@ -1,6 +1,7 @@
 name: gke-kubectl
 version: 0.1.0
 description: Step to run kubectl, with support for GKE clusters.
+summary: not empty
 keywords:
   - kubernetes
   - kubectl
