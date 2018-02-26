@@ -58,4 +58,4 @@ build:
 publish:
     steps:
         - internal/publish-step:
-            owner: cmeury
+            owner: markxnelson
