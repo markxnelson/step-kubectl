@@ -1,4 +1,4 @@
-box:   debian/jessie-slim
+box:   debian:jessie-slim
 
 build:
     steps:
