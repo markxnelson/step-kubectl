@@ -6,113 +6,113 @@ keywords:
   - kubectl
   - gke
 properties:
-  token:
+  - name: token
     type: string
     required: false
-  username:
+  - name: username
     type: string
     required: false
-  password:
+  - name: password
     type: string
     required: false
-  server:
+  - name: server
     type: string
     required: false
-  certificate-authority:
+  - name: certificate-authority
     type: string
     required: false
-  client-certificate:
+  - name: client-certificate
     type: string
     required: false
-  client-key:
+  - name: client-key
     type: string
     required: false
-  insecure-skip-tls-verify:
+  - name: insecure-skip-tls-verify
     type: string
     required: false
-  file:
+  - name: file
     type: string
     required: false
-  output:
+  - name: output
     type: string
     required: false
-  template:
+  - name: template
     type: string
     required: false
-  patch:
+  - name: patch
     type: string
     required: false
-  interactive:
+  - name: interactive
     type: string
     required: false
-  image:
+  - name: image
     type: string
     required: false
-  timeout:
+  - name: timeout
     type: string
     required: false
-  update-period:
+  - name: update-period
     type: string
     required: false
-  deployment-label-key:
+  - name: deployment-label-key
     type: string
     required: false
-  poll-interval:
+  - name: poll-interval
     type: string
     required: false
-  rollback:
+  - name: rollback
     type: string
     required: false
-  replicas:
+  - name: replicas
     type: string
     required: false
-  current-replicas:
+  - name: current-replicas
     type: string
     required: false
-  resource-version:
+  - name: resource-version
     type: string
     required: false
-  pod:
+  - name: pod
     type: string
     required: false
-  stdin:
+  - name: stdin
     type: string
     required: false
-  tty:
+  - name: tty
     type: string
     required: false
-  grace-period:
+  - name: grace-period
     type: string
     required: false
-  selector:
+  - name: selector
     type: string
     required: false
-  all:
+  - name: all
     type: string
     required: false
-  overwrite:
+  - name: overwrite
     type: string
     required: false
-  gcloud-key-json:
+  - name: gcloud-key-json
     type: string
     required: false
-  gke-cluster-name:
+  - name: gke-cluster-name
     type: string
     required: false
-  gke-cluster-zone:
+  - name: gke-cluster-zone
     type: string
     required: false
-  gke-cluster-project:
+  - name: gke-cluster-project
     type: string
     required: false
 
-  debug:
+  - name: debug:
     type: string
     required: false
     default: "false"
-  raw-global-args:
+  - name: raw-global-args
     type: string
     required: false
-  raw-args:
+  - name: raw-args
     type: string
     required: false
