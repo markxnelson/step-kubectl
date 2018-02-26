@@ -106,7 +106,7 @@ properties:
     type: string
     required: false
 
-  - name: debug:
+  - name: debug
     type: string
     required: false
     default: "false"
