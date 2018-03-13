@@ -20,11 +20,10 @@ build:
                 export GCLOUD_FILENAME="${GCLOUD_DIRNAME}-${GCLOUD_VERSION}.tar.gz"
                 export GCLOUD_URL="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${GCLOUD_FILENAME}"
                 echo "Installing version ${GCLOUD_VERSION} of the Google Cloud SDK"
-
-        - script:
-            name: Fetch gcloud archive
-            code: |
-                curl -L ${GCLOUD_URL} -o ${GCLOUD_FILENAME}
+ - script:
+      name: Fetch gcloud archive
+       code: |
+           curl -L ${GCLOUD_URL} -o ${GCLOUD_FILENAME}
 
         - script:
             name: Validate gcloud archive
